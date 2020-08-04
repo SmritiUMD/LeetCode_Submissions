@@ -33,7 +33,7 @@ public:
 first and last occurence of first character, if not then shift the partition.
         
 vector<int>p_l; //to store partition length
-int x[26];
+int x[26];   //to store ending indexes;
 for(int i=0;i<S.length();i++){
     x[S.at(i)-'a']=i;
 }
