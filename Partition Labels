@@ -33,23 +33,24 @@ public:
 first and last occurence of first character, if not then shift the partition.
         
 vector<int>p_l; //to store partition length
-int x[26];   //to store ending indexes;
+int x[26];
 for(int i=0;i<S.length();i++){
     x[S.at(i)-'a']=i;
 }
         
-int i=0;
-while(i<S.length()){
-   int end = x[S.at(i)-'a'];
-   int j = i+1;
-while(j!=end){
-    end=max(end,x[S.at(j++)-'a']);
+int start=0;
+    
+int end = 0;
+for(int i=0;i<S.size();i++){
+   int end = max(end,x[S.at(i)-'a']);
+    cout<<end<<endl;
+    if(end==i){
+        p_l.push_back(end-start+1);
+        start=i+1;
+        end=i+1;
+    }
 }
- p_l.push_back(j-i+1);
-    i=j+1;
-    cout<<j-i+1;
-}
-        return p_l;
+return p_l;
         
 }
 };
