@@ -29,5 +29,5 @@ public:
 
    ## Time complexity: O((r⋅c)2)O((r \cdot c)^2)O((r⋅c)2). Iterating over the entire matrix for each 1 in the matrix.
 
-    ##Space complexity: O(r⋅c)O(r \cdot c)O(r⋅c). No extra space required than the vector<vector<int> > dist
+  ##Space complexity: O(r⋅c)O(r \cdot c)O(r⋅c). No extra space required than the vector<vector<int> > dist
 
