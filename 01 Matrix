@@ -31,3 +31,47 @@ public:
 
   ##Space complexity: O(r⋅c)O(r \cdot c)O(r⋅c). No extra space required than the vector<vector<int> > dist
 
+
+
+#Using  BFS
+
+##Initially, distance for each 0 cell is 0 and distance for each 1 is INT_MAX, which is updated during the BFS.
+
+  int rows=matrix.size();
+        if (rows==0) return matrix;
+        int cols = matrix[0].size();
+        vector<vector<int>> dist(rows,vector<int>(cols,INT_MAX));
+        queue<pair<int,int>>q;
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                if (matrix[i][j]==0){
+                    dist[i][j]=0;
+                    q.push({i,j}); //putting all the zeros in the queue
+                }
+            }
+        }
+            int dir[4][2]= {{-1,0},{1,0},{0,-1},{0,1}};
+                while(!q.empty()){
+                    pair<int, int> curr = q.front();  //popping out first element
+                    q.pop();
+                    for(int k=0;k<4 ; k++){  // four possible neighbours
+                        int row_new=curr.first+dir[k][0];
+                        int col_new=curr.second+dir[k][1];
+                        if(row_new>=0 && col_new>=0 && row_new< rows && col_new <cols){
+                        #If the new calculated distance for neighbour {i,j} is smaller, we add {i,j} to q and update dist[i][j].
+                            if(dist[row_new][col_new] > dist[curr.first][curr.second]+1)
+                            {
+                               dist[row_new][col_new] = dist[curr.first][curr.second]+1; 
+                                q.push({row_new,col_new});
+                            }                        
+                            
+                    }
+                }
+                
+            }
+       
+        return dist;
+        
+    }
+    
+};
