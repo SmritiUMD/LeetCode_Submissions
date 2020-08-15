@@ -1,0 +1,19 @@
+class Solution {
+    private:
+    void number(TreeNode* root, int &counter, int min){
+       
+        if(!root) return;
+        if(root->val>=min) counter+=1;
+        
+        number(root->right, counter, max(min,root->val)); 
+        number(root->left, counter, max(min,root->val));
+        
+    }
+public:
+    int goodNodes(TreeNode* root) {
+        int counter=0;
+        number(root,counter,INT_MIN);
+        return counter;
+        
+    }
+};
