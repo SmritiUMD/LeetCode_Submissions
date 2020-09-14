@@ -14,3 +14,25 @@
      }
  }
    
+   ///delete duplicats 2
+   
+   public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head==NULL) return head;
+        ListNode* p=head->next;
+        if(p && head->val==p->val){
+           while(p && head->val==p->val){
+               p=p->next;
+           }
+           return deleteDuplicates(p);
+        }
+        else{
+            head->next=deleteDuplicates(head->next);
+        }
+    
+            
+             
+       return head; 
+    }
+};
+
