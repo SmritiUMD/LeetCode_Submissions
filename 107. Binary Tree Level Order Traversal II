@@ -43,3 +43,25 @@ public:
         return s;
     }
 };
+
+class Solution {
+    vector<vector<int>>result;
+    public:
+    void helper(TreeNode* root, int levels){
+        if(result.size()==levels){
+            result.push_back({});
+        }
+        result[levels].push_back(root->val);
+        if(root->left) helper(root->left,levels+1);
+        if(root->right) helper(root->right,levels+1);
+        
+    }
+    public:
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+        int levels =0;
+        if(root==NULL) return result;
+        helper(root,0);
+        reverse(result.begin(), result.end());
+        return result;
+    }
+};
