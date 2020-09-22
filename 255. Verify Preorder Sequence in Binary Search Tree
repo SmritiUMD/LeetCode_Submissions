@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool verifyPreorder(vector<int>& pre) {
+        int root=INT_MIN;
+        stack<int>s;
+        
+        for(int i=0;i<pre.size();i++){
+            if(pre[i]<root) {
+                return false;
+            }
+        
+            while(!s.empty() && s.top()<pre[i]){
+                
+                root=s.top();
+                s.pop();
+            }
+            s.push(pre[i]);
+        }
+        return true;
+    }
+};
