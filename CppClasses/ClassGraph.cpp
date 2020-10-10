@@ -5,13 +5,17 @@ using namespace std;
 class graph{
     
     private:
-    
+    //nodes
         int V;
+    //list to store nodes
         list<int> *adj;
     
     public:
-        graph( int V);
+    //parametrized constructor
+        graph( int V); 
+    //function to add edge
         void addEdge(int u, int v);
+    //function to print graph
         void printgraph();
         };
 
@@ -24,6 +28,7 @@ class graph{
 
     void graph::addEdge(int u, int v)
     {
+        //adding edges to undirected graph
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
@@ -43,6 +48,7 @@ class graph{
 
 int main()
 {
+    //object of class graph
     graph g(4);
     g.addEdge(0, 1); 
     g.addEdge(0, 2); 
