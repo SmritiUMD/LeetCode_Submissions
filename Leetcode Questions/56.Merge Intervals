@@ -1,0 +1,37 @@
+# sort the intervals.
+#add first vector into temp and compare the intervals such that second element of temp is greater than first element of next vector.
+
+
+
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        vector<vector<int>>final_r;
+       
+        sort(intervals.begin(),intervals.end());
+       
+        if(intervals.size()==0 ){
+           
+            return intervals;
+        }
+       vector<int>current_int=intervals[0];
+       for(int i=1;i<intervals.size();i++){
+            int current_begin=current_int[0];
+            int current_end=current_int[1];
+            int next_begin=intervals[i][0];
+            int next_end=intervals[i][1];
+            if(next_begin>current_end){
+                 final_r.emplace_back(current_int);
+                current_int=intervals[i];
+               }
+            else{
+                  current_int[1]=max(current_end,next_end);
+            }
+       }
+           final_r.emplace_back(current_int);
+            return final_r;
+        
+    }
+};
+
+

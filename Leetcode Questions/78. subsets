@@ -1,0 +1,22 @@
+class Solution {
+    public:
+    vector<vector<int>>result;
+         void helper(vector<int>& nums,vector<int>& current,int start){
+            
+             result.push_back(current);
+            for(int j=start;j<nums.size();j++){
+                 current.push_back(nums[j]);
+                cout<<nums[j]<<" ";
+                 helper(nums,current,j+1);
+                current.pop_back();
+                }
+         }
+
+    vector<vector<int>> subsets(vector<int>& nums) {
+         vector<int> current;
+        if(nums.size()==0) result.push_back(current);
+             helper(nums,current,0);
+        return  result;
+        
+    }
+};

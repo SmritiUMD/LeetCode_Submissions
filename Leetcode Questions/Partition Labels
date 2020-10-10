@@ -1,0 +1,57 @@
+class Solution {
+public:
+    vector<int> partitionLabels(string S) {
+       vector<int>ans;
+        unordered_map<char,int>freq;
+        for(int i=0;i<S.length();i++){
+            freq[S[i]]=max(freq[S[i]],i);
+        }
+        unordered_map<char,int>::iterator it;
+        // for(it=freq.begin();it!=freq.end();it++){
+        //     cout<<it->first<<it->second<<endl;
+        // }
+        int index=-1;
+        int prev=-1;
+        for(int i=0;i<S.length();i++){
+          index=max(index,freq[S[i]]);
+            cout<<index<<endl;
+            if(index==i){
+                cout<<i-prev;
+                ans.push_back(i-prev);
+               
+                prev=index;
+                // cout<<prev<<" ";
+            }
+        }
+        
+     return ans;   
+    }
+};
+        
+##Solution-2    
+## Approach-Start with the first character and look for its last occurence, check whether every character's last occurence is between
+first and last occurence of first character, if not then shift the partition.
+        
+vector<int>p_l; //to store partition length
+int x[26];
+for(int i=0;i<S.length();i++){
+    x[S.at(i)-'a']=i;
+}
+        
+int start=0;
+    
+int end = 0;
+for(int i=0;i<S.size();i++){
+   int end = max(end,x[S.at(i)-'a']);
+    cout<<end<<endl;
+    if(end==i){
+        p_l.push_back(end-start+1);
+        start=i+1;
+        end=i+1;
+    }
+}
+return p_l;
+        
+}
+};
+        

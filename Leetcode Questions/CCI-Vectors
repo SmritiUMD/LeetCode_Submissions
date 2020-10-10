@@ -1,0 +1,38 @@
+1.1// Finding if the string have unique characters
+  vector<int>chars(26,1);
+  
+ for(int i=0;i<a.size();i++){
+     int index=int(a[i])-97;
+     cout<<index;
+     chars[index]+=1;
+ }
+ for(int i=0;i<chars.size();i++){
+  
+     if(chars[i]==2){
+         cout<<"false";
+         break;
+     }
+ }
+   
+   ///delete duplicats 2
+   
+   public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head==NULL) return head;
+        ListNode* p=head->next;
+        if(p && head->val==p->val){
+           while(p && head->val==p->val){
+               p=p->next;
+           }
+           return deleteDuplicates(p);
+        }
+        else{
+            head->next=deleteDuplicates(head->next);
+        }
+    
+            
+             
+       return head; 
+    }
+};
+

@@ -1,0 +1,34 @@
+// we will create a dp array to store the coins needed to make the amount.
+//bottom -top approach!!
+// we will start from 0 to amount given, calculating the coins and use previously stored coins insted of calulating everytime.
+// ex. [1,2,5] amount 11
+
+
+
+
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+    int max=amount+1;
+    vector<int>dp(amount+1,amount+1);
+    dp[0]=0;
+    for(int i=0;i<=amount;i++){
+        for(int j=0;j<coins.size();j++){
+            if(coins[j]<=i){
+            
+            //i-coin[j] is the index of previously stored number of coins.
+            // we will traverse all the coins from 1
+            // to make amount 5;
+            // for 1= 5-1 is 4, look at the index 4;
+            //for 2, 5-2 is 3, look at index 3;
+            // for 5, 5-5 is 0, look at the index 0;
+            // store the minimum value at each time only
+                dp[i]=min(dp[i],dp[i-coins[j]]+1);
+            }
+        }
+    }
+        return dp[amount]>amount? -1:dp[amount];
+       
+    }
+};
