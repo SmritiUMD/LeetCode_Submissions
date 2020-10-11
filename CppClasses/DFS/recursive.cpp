@@ -100,3 +100,6 @@ int main()
     return 0;
 }
 
+//Time complexity: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+//Space Complexity: O(V).
+
