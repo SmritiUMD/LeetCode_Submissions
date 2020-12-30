@@ -1,0 +1,39 @@
+class Solution {
+public:
+    bool judgeCircle(string moves) {
+        int x=0;
+        int y=0;
+        int i=0;
+        while(i<moves.size()){
+            if(moves[i]=='D'){
+                y=y-1;
+                cout<<x<<y<<"down"<<endl;
+            }
+            else if(moves[i]=='U'){
+                y+=1;
+                cout<<x<<y<<"up"<<endl;
+            }
+            else if(moves[i]=='R'){
+                x+=1;
+            }
+            else if(moves[i]=='L'){
+                x-=1;
+            }
+            i++;
+        }
+        cout<<x<<y;
+        if(x==0 && y==0){
+            return true;
+        }
+       return false; 
+    }
+};
+
+int main(){
+string moves="RRDD"
+Solution o;
+boot result;
+result=o.judgeCircle(moves);
+cout<<result;
+
+};
