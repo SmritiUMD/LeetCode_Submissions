@@ -51,6 +51,46 @@ public:
     }
 };
 
+
+    
+    
+    //inorder iterative solution
+ public:
+    bool isValidBST(TreeNode* root) {
+        
+        stack<TreeNode*>s;
+        TreeNode* curr= root;
+        //use pointer otherwise int will make NULL = 0 during comparison
+        //[0,null, -2] will not pass
+        int* prev=NULL;
+        while(!s.empty() || curr){
+            while(curr){
+                s.push(curr);
+                curr=curr->left;
+            }
+            curr=s.top();
+            s.pop();
+            if(prev!=NULL && curr->val<= *prev){
+                return false;
+            }
+            else{
+                prev=&(curr->val);
+                curr=curr->right;
+            }
+        }
+        return true;
+        
+    }
+};
+
+
+    
+    
+    
+
+
+
+
 int main()
 {
     struct TreeNode* root= new TreeNode(1);
