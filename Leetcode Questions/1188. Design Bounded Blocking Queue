@@ -1,0 +1,41 @@
+class BoundedBlockingQueue {
+    private:
+    int m;
+    vector<int>q;
+    mutex mtx;
+    condition_variable cv;
+public:
+    BoundedBlockingQueue(int capacity) {
+        m=capacity;
+        
+    }
+    
+    void enqueue(int element) {
+    {
+        unique_lock<mutex> lck(mtx);
+       cv.wait(lck,[=] (){ return q.size()<m ;});
+        q.insert(q.begin(),element);
+    }
+    cv.notify_one();
+        
+      }
+    
+    int dequeue() {
+        int back=0;
+        {
+       
+       unique_lock<mutex> latch(mtx);
+            cv.wait(latch, [=]() { return q.size() > 0; });
+            back = q[q.size()-1];
+            q.pop_back();
+        }
+        cv.notify_one();
+        return back;
+        
+    }
+    
+    int size() {
+        return q.size();
+        
+    }
+};
