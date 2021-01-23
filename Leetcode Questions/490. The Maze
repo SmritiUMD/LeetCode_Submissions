@@ -1,0 +1,103 @@
+// class Solution {
+   ///BFS
+// public:
+//     bool hasPath(vector<vector<int>>& grid, vector<int>& st, vector<int>& d) {
+        
+//          int r=grid.size();
+//         int c=grid[0].size();
+//         vector<pair<int,int>>dir={{1,0},{-1,0},{0,1},{0,-1}};
+//         queue<pair<int,int>>s;
+        
+//         vector<vector<bool>>visited(r, vector<bool>(c,0));
+    
+        
+//         if(st[0]==d[0] && st[1]==d[1]) return true;
+//         if(grid[st[0]][st[1]]==1) return false;
+//         s.push({st[0],st[1]});
+//         visited[st[0]][st[1]]=true;
+        
+//         while(!s.empty()){
+//             auto curr=s.front();
+//             s.pop();
+//             if(curr.first==d[0] && curr.second==d[1]) {
+//                 return true;
+//             }
+//             for(int i=0;i<dir.size();i++){
+//                 int new_x=curr.first+dir[i].first;
+//                 int new_y=curr.second+dir[i].second;
+            
+//                 while(new_x<r && new_x>=0 && new_y>=0 && new_y<c && grid[new_x][new_y]==0  ){
+//                     new_x+=dir[i].first;
+//                     new_y+=+dir[i].second;
+//                 }
+                    
+//                 if(!visited[new_x-dir[i].first][new_y-dir[i].second]){
+//                         s.push({new_x-dir[i].first,new_y-dir[i].second});
+//                         visited[new_x-dir[i].first][new_y-dir[i].second]=true;
+//                     }
+//                 }
+//             }
+        
+//         return false;
+        
+       
+        
+//     }
+// };
+
+
+///Recursive DFS
+ class Solution {
+     vector<vector<int>>grid;
+    
+     vector<int>dest;
+     vector<vector<bool>>visited;
+     
+     bool dfs(vector<int>start){
+         if(visited[start[0]][start[1]]) return false;
+         if(start[0]==dest[0] && start[1]==dest[1]) return true;
+         
+         visited[start[0]][start[1]]= true;
+         
+         int r=start[1]+1;
+         int l=start[1]-1;
+         int u=start[0]-1;
+         int d=start[0]+1;
+         //right
+         while(r<grid[0].size() && grid[start[0]][r]==0) r++;
+         if(dfs({start[0],r-1})) return true;
+         
+         //left
+         while(l>=0 && grid[start[0]][l]==0) l--;
+         if(dfs({start[0],l+1})) return true;
+         
+         //up
+         while(u>=0 && grid[u][start[1]]==0) u--;
+         if(dfs({u+1,start[1]})) return true;
+         
+         
+         //down
+         while(d<grid.size() && grid[d][start[1]]==0) d++;
+         if(dfs({d-1,start[1]})) return true;
+         
+         return false;
+         
+     }
+   
+public:
+    bool hasPath(vector<vector<int>>& maze, vector<int>& st, vector<int>& destination) {
+    vector<vector<int>>grid=maze;
+        int row=maze.size();
+        int col=maze[0].size();
+        visited=vector<vector<bool>>(grid.size(), vector<bool>(grid[0].size(),false));
+        vector<int>dest=destination;
+        return dfs(st);
+        
+       
+        
+    }
+};
+
+
+
+
