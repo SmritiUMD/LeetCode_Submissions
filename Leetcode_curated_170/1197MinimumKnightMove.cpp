@@ -1,3 +1,8 @@
+//In In an infinite chess board with coordinates from -infinity to +infinity, you have a knight at square [0, 0].
+
+//A knight has 8 possible moves it can make, as illustrated below. Each move is two squares in a cardinal direction,
+//then one square in an orthogonal direction. Find minimum number of moves to reach given coordinates
+
 #include <bits/stdc++.h>
 
 class Solution {
@@ -23,7 +28,7 @@ public:
         int moves=1;
         set<pair<int,int>>visited;
         visited.insert({0,0});
-        
+        //BFS
         while(!q.empty()){
             //running 
             // for(int j=0;j<q.size();j++){
