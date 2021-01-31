@@ -1,3 +1,8 @@
+/******************************************************************************
+@author -Smriti Gupta
+@date created-January 30,2021
+*******************************************************************************/
+
 //Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number of conference rooms required.
 
 #include <bits/stdc++.h>
@@ -39,5 +44,6 @@ int main(){
 Solution obj;
 vector<vector<int>>intervals={{0,30},{5,10},{15,20}};
 cout<<obj.minMeetingRooms(intervals);
-};
+return 0;
+}
 //O(Nlogn)- sorting arrays and cosidering N intervals
