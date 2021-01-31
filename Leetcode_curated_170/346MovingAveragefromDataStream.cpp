@@ -1,3 +1,8 @@
+/******************************************************************************
+@author -Smriti Gupta
+@date created-January 30,2021
+*******************************************************************************/
+
 //Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
 
 //Implement the MovingAverage class:
@@ -37,4 +42,5 @@ int main(){
  MovingAverage* obj = new MovingAverage(size);
  double param_1 = obj->next(val);
  cout<<param_1;
- };
+   return 0;
+ }
