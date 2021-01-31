@@ -1,3 +1,7 @@
+/******************************************************************************
+@author -Smriti Gupta
+@date created-January 30,2021
+*******************************************************************************/
 //In In an infinite chess board with coordinates from -infinity to +infinity, you have a knight at square [0, 0].
 
 //A knight has 8 possible moves it can make, as illustrated below. Each move is two squares in a cardinal direction,
