@@ -44,7 +44,11 @@ public:
         return result;
         
     }
-};
+}; 
+
+//time complexity- adding elements into map - 0(N)
+//                  adding elements into heap- O(log k) i.e., total = O(Nlogk).
+//space- O(N)
 
 
 int main()
