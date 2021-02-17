@@ -40,3 +40,11 @@ int main()
    return 0;
 }
 
+/*
+https://www.geeksforgeeks.org/minimum-and-maximum-of-all-subarrays-of-size-k-using-map/
+https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
+Using deque- O(n)
+*/
+
+
+
