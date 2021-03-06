@@ -15,8 +15,13 @@ class Solution {
         vector<int>parents;
         vector<int>weights;
         public:
-        /*In this technique, in addition to the parent nodes, we also keep the weights of each of the nodes. Every time we take union, the root node with more weight (i.e. having more elements in the corresponding set) is used as the parent node of the other node. We initialize the weight corresponding to each node as 1 initially, as each element belongs to it's own set in the beginning. */
+        /* weighted Union -In this technique, in addition to the parent nodes, we also keep the weights of each of the nodes. 
+        Every time we take union, the root node with more weight (i.e. having more elements in the corresponding set)
+        is used as the parent node of the other node. We initialize the weight corresponding to each node as 1 initially,
+        as each element belongs to it's own set in the beginning. 
+        */
         
+        // weighted union
         void Union(int a, int b){
             int rootA=Find(a);
             int rootB=Find(b);
@@ -40,7 +45,15 @@ class Solution {
             }
         }
         
+        /*
+        Path Compression-
+        while obtaining the root, we compress the path by assigning the
+       grandparent of the node as the parent (thereby skipping connections
+       and moving nodes closer to the root).
+       
+       */
         int Find(int a){
+            
             //traverse all the way to top to return the root node
             while(a!=this->parents[a]){
                 //path compression
@@ -90,6 +103,7 @@ public:
             //if both edges belongs to the same group,  dont add them
             if(disjointset->isInSameGroup(a,b))
                 continue;
+            
             //if a and b are not connected take union
             disjointset->Union(a,b);
             
