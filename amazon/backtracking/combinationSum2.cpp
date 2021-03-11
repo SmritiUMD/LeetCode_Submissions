@@ -9,6 +9,9 @@
 using namespace std;
 
 class Solution {
+    vector<vector<int>>result;
+    vector<int>candidates;
+    int target;
    /*
    we need to use each number exactly once but there are duplicates.
    To avoid same combinations increment the index after calling backtracking function.
@@ -18,49 +21,44 @@ class Solution {
    
    
    */
-    private:
-    void backtrack(vector<int>& temp,vector<vector<int>>& result, int start, vector<int>& candidates, int remain_sum){ 
-        if(remain_sum==0){
+    void backtrack(int remaining_sum, vector<int>temp, int start){
+        if(remaining_sum==0){
             result.push_back(temp);
-            return;
         }
-        else if(remain_sum<0){
+        if(remaining_sum<0)
             return;
-            
-        }
         
-        else{
-            
-            for(int i=start;i<candidates.size();i++)
-            {
-                if(candidates[i]<=remain_sum){
+        for(int i=start;i<candidates.size();i++){
+                // add the number to combination
                 temp.push_back(candidates[i]);
-                backtrack(temp, result,i+1,candidates,remain_sum-candidates[i]);
+                // start from current number - repeatition is allowed for same number
+                backtrack(remaining_sum-candidates[i] , temp, i+1);
+                // remove the number to backtrack
                 int curr=temp.back();
                 temp.pop_back();
-                    
                 while( i<candidates.size()-1 && curr== candidates[i+1])
                 {
                     i++;
                 }
-             }
-            }
+            
         }
+        
     }
-       
-  
+    
 public:
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
-        sort(candidates.begin(), candidates.end());
-         vector<vector<int>>result;
-            vector<int>temp;
-            backtrack(temp, result,0,candidates, target);
-            
-            return result;
+        sort(candidates.begin(),candidates.end());
+        this->candidates=candidates;
+        this->target=target;
+        vector<int>temp;
         
+        backtrack(target,temp, 0);
+        
+       return result; 
         
     }
 };
+ 
 int main()
 {
     Solution obj;
