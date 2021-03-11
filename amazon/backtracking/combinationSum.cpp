@@ -1,3 +1,13 @@
+/******************************************************************************
+@author - Smriti Gupta
+@date created - March 11, 21
+
+*******************************************************************************/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
 class Solution {
     vector<vector<int>>result;
     vector<int>candidates;
@@ -41,3 +51,23 @@ public:
         
     }
 };
+
+int main()
+{
+    Solution obj;
+    int k=7;
+    vector<int>candidates={2,3,6,7};
+    vector<vector<int>>result=obj.combinationSum(candidates,k);
+    
+    for(auto x:result){
+        
+        for(auto y:x){
+            cout<<y<<",";
+        }
+        cout<<endl;
+    }
+    
+    
+
+    return 0;
+}
