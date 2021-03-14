@@ -18,6 +18,31 @@ struct Node {
         
     }
 };
+/*
+REcursive solution using hash maps to keep original and cloned nodes.
+*/
+// class Solution {
+//     public:
+//     //original node, clone nodes
+//     map<Node*, Node*>copy;
+//     Node* copyRandomList(Node* head) {
+//         if(head==NULL)
+//             return head;
+//         if(copy.find(head)!=copy.end()){
+//             return copy[head];
+//         }
+//         //cloning the node with original value
+//         Node* newNode= new Node(head->val, NULL, NULL);
+        
+//         copy.insert({head,newNode});
+        
+//         newNode->next= copyRandomList(head->next);
+//         newNode->random = copyRandomList(head->random);
+        
+//         return newNode;
+        
+//     }
+// };
  
 class Solution {
     //iterative - O(1) - space
