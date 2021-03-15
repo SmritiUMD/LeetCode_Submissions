@@ -7,6 +7,36 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+// Using DFS
+/*For every city call dfs function to check if any other city is connected to it or not
+*/
+// class Solution {
+//     vector<bool>visited;
+//     vector<vector<int>>isConnected;
+//     void dfs(int index){
+//         for(int j=0;j<isConnected.size();j++){
+//             if(isConnected[index][j]==1 && !visited[j]){
+//                 visited[j]=true;
+//                 dfs(j);
+//             }
+//     }
+//     }
+//      public:
+//     int findCircleNum(vector<vector<int>>& isConnected) {
+//         visited.resize(isConnected.size(),false);
+//         this->isConnected=isConnected;
+//         int count=0;
+//         for(int i=0;i<isConnected.size();i++){
+//             if(!visited[i]){
+//                 dfs(i);
+//                 count++;
+//             }
+//         }
+        
+//         return count;
+        
+//     }
+// };
 
 class Solution {
     //using union find
