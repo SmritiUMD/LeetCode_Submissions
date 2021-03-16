@@ -14,7 +14,8 @@ before adding that edge into the graph:
 #include <bits/stdc++.h>
 
 using namespace std;
-
+/*
+// Using DFS- O(n^2)
 class Solution {
     set<int>seen;
     map<int,vector<int>>graph;
@@ -55,6 +56,67 @@ public:
         
         
        return {}; 
+    }
+};
+*/
+// Using Union Find - O(n)
+
+class Union{
+    vector<int>parent;
+    vector<int>rank;
+    public:
+    Union(int size){
+        this->parent.resize(size+1,0);
+        for(int i=0;i<size+1;i++){
+            parent[i]=i;
+        }
+        this->rank.resize(size+1,0);
+    }
+    public:
+    //if current node have parent equal to the node, return parent
+    //(the node has not traversed yet , we will start from this.)
+    //otherwise, keep traversing back till the root node to find the parent
+    int find(int i){
+       
+        if(parent[i]==i)
+           return parent[i];
+        return parent[i]=find(parent[i]);
+    }
+    
+    bool findUnion(int x, int y){
+        int x_r=find(x);
+        int y_r=find(y);
+        //if both have common parent - overlapping
+        if(x_r==y_r)
+            return false;
+        // else check the rank to assign the parents
+        if(rank[x_r]>rank[y_r])
+            parent[x_r]=y_r;
+        else if(rank[x_r]<rank[y_r])
+            parent[y_r]=x_r;
+        else{
+            parent[y_r]=x_r;
+            //x_r is the child of y_r so its rank will increase by 1.
+            //as we move away from the current node, the rank will increase
+            rank[x_r]++;
+            }
+            
+        return true;
+    }
+    
+};
+
+class Solution {
+    
+public:
+    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+        Union obj(edges.size() );
+        //traverse over the edges and is their is overlapping- connection is redundant
+        for(int i=0;i<edges.size();i++){
+            if(!obj.findUnion(edges[i][0],edges[i][1]))
+                return edges[i];
+        }
+        return {};
     }
 };
 
