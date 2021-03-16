@@ -3,6 +3,14 @@
 @date created - March 2,2021
 *******************************************************************************/
 
+/*
+ the graph, we will check 2 conditions before adding that edge into the graph:
+    1.if that edge already exists in the graph
+    'and'
+    2. if there is some cycle adter adding this edge)DFS.
+    If both are true - means redundant
+    */
+
 #include <bits/stdc++.h>
 
 using namespace std;
