@@ -70,19 +70,21 @@ class Union{
         for(int i=0;i<size+1;i++){
             parent[i]=i;
         }
+        //to optimize - store child - parent information by rank.
         this->rank.resize(size+1,0);
     }
     public:
-    //if current node have parent equal to the node, return parent
+    //if current node have parent equal to the node, return parent--->leader node
     //(the node has not traversed yet , we will start from this.)
     //otherwise, keep traversing back till the root node to find the parent
     int find(int i){
-       
+       //if i is the leader
         if(parent[i]==i)
            return parent[i];
+        //path compression - to optimize
         return parent[i]=find(parent[i]);
     }
-    
+    //draws edge in the graph keeping parent child information (uses find function )
     bool findUnion(int x, int y){
         int x_r=find(x);
         int y_r=find(y);
@@ -97,7 +99,6 @@ class Union{
         else{
             parent[y_r]=x_r;
             //x_r is the child of y_r so its rank will increase by 1.
-            //as we move away from the current node, the rank will increase
             rank[x_r]++;
             }
             
@@ -111,7 +112,7 @@ class Solution {
 public:
     vector<int> findRedundantConnection(vector<vector<int>>& edges) {
         Union obj(edges.size() );
-        //traverse over the edges and is their is overlapping- connection is redundant
+        //raverse over the edges and is their is overlapping- connection is redundant
         for(int i=0;i<edges.size();i++){
             if(!obj.findUnion(edges[i][0],edges[i][1]))
                 return edges[i];
@@ -119,7 +120,7 @@ public:
         return {};
     }
 };
-
+     
 int main()
 {
     Solution obj;
