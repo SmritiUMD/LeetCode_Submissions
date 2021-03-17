@@ -6,6 +6,11 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+/*find(...) amortizes to O(α(N))O(α(N)), where α is the Inverse Ackermann Function. 
+The incredible thing about this function is that it grows so slowly 
+that N will never go higher than 4 in the universe as we know it! So while in "practice" it is effectively O(1), in "theory" it is not.
+Space - O(N)
+*/
 
  class Union{
     vector<int>parent;
