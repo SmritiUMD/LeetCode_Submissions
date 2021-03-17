@@ -3,6 +3,13 @@
 @date created - March 6, 21
 *******************************************************************************/
 
+/*In this technique, in addition to the parent nodes, 
+we also keep the weights of each of the nodes. Every time we take union,
+the root node with more weight (i.e. having more elements in the corresponding set)
+is used as the parent node of the other node. We initialize the weight corresponding to 
+each node as 1 initially, as each element belongs to it's own set in the beginning. */
+        
+
 #include <bits/stdc++.h>
 
 using namespace std;
