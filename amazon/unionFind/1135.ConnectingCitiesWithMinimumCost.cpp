@@ -7,7 +7,15 @@
 we also keep the weights of each of the nodes. Every time we take union,
 the root node with more weight (i.e. having more elements in the corresponding set)
 is used as the parent node of the other node. We initialize the weight corresponding to 
-each node as 1 initially, as each element belongs to it's own set in the beginning. */
+each node as 1 initially, as each element belongs to it's own set in the beginning.
+
+Time complexity: Assuming N to be the total number of nodes (cities) 
+and M to be the total number of edges (connections). Sorting all the MM connections will
+take O(M⋅logM). Performing union find each time will take Nlog 
+N (Iterated logarithm). Hence for M edges, it's O(M⋅log N) which is practically O(M)
+ as the value of iterated logarithm,  NlogN never exceeds 5.
+
+Space complexity: O(N), space required by parents and weights.*/
         
 
 #include <bits/stdc++.h>
