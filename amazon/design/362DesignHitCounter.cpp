@@ -3,6 +3,22 @@
 @date- April 9,21
 
 *******************************************************************************/
+/*
+Time Complexity
+
+hit - Since inserting a value in the queue takes place in O(1)O(1) time, hence hit method works in O(1)O(1).
+
+getHits - Assuming a total of nn values present in the queue at a time and the total number of timestamps 
+encountered throughout is NN. In the worst case scenario, we might end up removing all the entries from the 
+queue in getHits method if the difference in timestamp is greater than or equal to 300. Hence in the worst case
+, a "single" call to the getHits method can take O(n)O(n) time. However, we must notice that each timestamp is
+processed only twice (first while adding the timestamp in the queue in hit method and second while removing 
+the timestamp from the queue in the getHits method). Hence if the total number of timestamps encountered throughout 
+is NN, the overall time taken by getHits method is O(N)O(N). This results in an amortized time complexity of O(1)
+for a single call to getHits method.
+
+Overall Space - O(n)
+*/
 
 #include <bits/stdc++.h>
 
